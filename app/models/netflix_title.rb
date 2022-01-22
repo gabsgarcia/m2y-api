@@ -1,0 +1,3 @@
+class NetflixTitle < ApplicationRecord
+
+end
