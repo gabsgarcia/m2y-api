@@ -17,16 +17,11 @@ ActiveRecord::Schema.define(version: 2022_01_22_154735) do
 
   create_table "netflix_titles", force: :cascade do |t|
     t.string "show_id"
-    t.string "type"
     t.string "title"
-    t.string "director"
-    t.string "cast"
+    t.string "genre"
+    t.string "year"
     t.string "country"
-    t.string "date_added"
-    t.string "release_year"
-    t.string "rating"
-    t.string "duration"
-    t.string "listed_in"
+    t.string "published_at"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
