@@ -1,6 +1,5 @@
 require 'csv'
 class Api::V1::NetflixTitlesController < Api::V1::BaseController
-  before_action :import, only: %i[index show]
 
   def import
     # to read the cvs file in a endpoint
@@ -18,16 +17,12 @@ class Api::V1::NetflixTitlesController < Api::V1::BaseController
   end
 
   def index
-    # if params[:query].present?
-    #   @netflix_titles = NetflixTitle.where(year: params[:query])
-    # else
+    if params[:query].present?
+      # to filter the entries by params
+      @netflix_titles = NetflixTitle.search_by_year_country_genre(params[:query])
+    else
       # to show all the entries in order by the year
       @netflix_titles = NetflixTitle.all.order(:year)
-    # end
-  end
-
-  def show
-    # to show each entry
-    @netflix_title = NetflixTitle.find(params[:id])
+    end
   end
 end
